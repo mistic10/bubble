@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: EventComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: EventComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Component } from './Component.js'
+
+/**
+ * @author vincent jeanvoine
+ * @mail hypnolog@yahoo.fr
+ * 
+ * @version 0.0.1
+ * 
+ * @abstract
+ * @classdesc gère les evenements déclanché sur les objet 2d "Component"
+ * @augments Component
+ */
+
+export class EventComponent extends Component {
+    /**
+     * @param {Object} data - contient toutes les données de configuration de l'objet
+     * @description constructor: crée un nouvel object 2d EventComponent
+     */
+    constructor(data){
+        super(data)
+
+        if(this.constructor.name == 'Component')
+            throw new TypeError('"EventComponent" est une class abstraite et ne doit pas être instanciée directement')
+
+        this.cursorIn = false
+
+        this.click = new Event("click")
+        this.mousedown = new Event("mousedown")
+        this.mouseup = new Event("mouseup")
+        this.mousemove = new Event("mousemove")
+        this.mouseenter = new Event("mouseenter")
+        this.mouseout = new Event("mouseout")
+
+        this.touchstart = new Event("touchstart")
+        this.touchend = new Event("touchend")
+        this.touchmove = new Event("touchmove")
+        this.touchenter = new Event("touchenter")
+        this.touchout = new Event("touchout")
+
+
+        this.handlerClick()
+        this.handlerMouseMove()
+        this.handlerMouseDown()
+        this.handlerMouseUp()
+
+        this.handlerTouchStart()
+        this.handlerTouchEnd()
+        this.handlerTouchMove()
+    }
+
+    /**
+     * @description test si l'evenemmet "e" a été déclancher sur l'object "EventComponent"
+     * @param {Event} e - l'evenemmet a tester
+     * @method
+     */
+    hover(e){
+        return (e.x > this.position.x &amp;&amp; e.x &lt; this.position.x + this.size.width) &amp;&amp; (e.y > this.position.y &amp;&amp; e.y &lt; this.position.y + this.size.height)
+    }
+
+    /**
+     * @description gère les evenements de mouvements de sourie
+     * @method
+     */
+    handlerMouseMove(){
+        this.scene.canvas.addEventListener('mousemove', (e) => {
+            if(this.hover(this.scene.mousePosition(e))){
+                if(!this.cursorIn){
+                    this.cursorIn = true
+                    this.mouseenter.originalEvent = e
+                    this.dispatchEvent(this.mouseenter)
+                }
+
+                this.mousemove.originalEvent = e
+                this.dispatchEvent(this.mousemove)
+            }
+            else{
+                if(this.cursorIn){
+                    this.cursorIn = false
+                    this.mouseout.originalEvent = e
+                    this.dispatchEvent(this.mouseout)
+                }
+            }
+        }, false)
+    }
+
+    /**
+     * @description gère les evenements de click de sourie
+     * @method
+     */
+    handlerClick(){
+        this.scene.canvas.addEventListener('click', (e) => {
+            if(this.cursorIn){
+                this.click.originalEvent = e
+                this.dispatchEvent(this.click)
+            }
+        }, false)
+    }
+
+    /**
+     * @description gère les evenements d'appuis sur le boutton de la sourie
+     * @method
+     */
+    handlerMouseDown(){
+        this.scene.canvas.addEventListener('mousedown', (e) => {
+            if(this.cursorIn){
+                this.mousedown.originalEvent = e
+                this.dispatchEvent(this.mousedown)
+            }
+        }, false)
+    }
+
+    /**
+     * @description gère les evenements de relachemment du boutton de la sourie
+     * @method
+     */
+    handlerMouseUp(){
+        if(typeof this.mouseup === "function"){
+            this.scene.canvas.addEventListener('mouseup', (e) => {
+                if(this.cursorIn){
+                    this.mouseup.originalEvent = e
+                    this.dispatchEvent(this.mouseup)
+                }
+            }, false)
+        }
+    }
+
+
+
+    /**
+     * @description gère les evenements de début de touché (écran tactile)
+     * @method
+     */
+    handlerTouchStart(){
+        this.scene.canvas.addEventListener('touchstart', (e) => {
+            if(this.hover(this.scene.touchePosition(e))){
+                this.cursorIn = true
+                this.touchstart.originalEvent = e
+                this.dispatchEvent(this.touchstart)
+            }
+        }, false)
+    }
+    
+    /**
+     * @description gère les evenements de fin de touché (écran tactile)
+     * @method
+     */
+    handlerTouchEnd(){
+        this.scene.canvas.addEventListener('touchend', (e) => {
+            if(this.cursorIn){
+                this.cursorIn = false
+                this.touchend.originalEvent = e
+                this.dispatchEvent(this.touchend)
+            }
+                
+        }, false)
+    }
+    /**
+     * @description gère les evenements de déplacemment d'un touché (écran tactile)
+     * @method
+     */
+    handlerTouchMove(){
+        this.scene.canvas.addEventListener("touchmove", (e) => {
+            if(this.hover(this.scene.touchePosition(e))){
+                if(!this.cursorIn){
+                    this.cursorIn = true
+                    this.touchenter.originalEvent = e
+                    this.dispatchEvent(this.touchenter)
+                }
+
+                this.touchmove.originalEvent = e
+                this.dispatchEvent(this.touchmove)
+            }
+            else{
+                if(this.cursorIn){
+                    this.cursorIn = false
+                    this.touchout.originalEvent = e
+                    this.dispatchEvent(this.touchout)
+                }
+            }
+        }, false);
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Angle.html">Angle</a></li><li><a href="Animation.html">Animation</a></li><li><a href="Animations.html">Animations</a></li><li><a href="AssetsBank.html">AssetsBank</a></li><li><a href="Component.html">Component</a></li><li><a href="EventComponent.html">EventComponent</a></li><li><a href="FileLoader.html">FileLoader</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="Scene.html">Scene</a></li><li><a href="Size.html">Size</a></li><li><a href="Source.html">Source</a></li><li><a href="Vector.html">Vector</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sat Mar 20 2021 11:43:51 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "sizeElem" : {
+        "btnGui" : {
+            "width" : 48,
+            "height" : 48
+        },
+        "btnPart" : {
+            "width" : 48,
+            "height" : 48
+        },
+        "numLevel" : {
+            "width" : 15,
+            "height" : 24
+        }
+    }
+}
