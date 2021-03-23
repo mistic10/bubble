@@ -29,8 +29,8 @@ export class Game{
 
         this.loadingPage.addEventListener('load', (e) => {
             this.loadingPage.dispose()
-            this.map.evetHandler()
             this.map.draw()
+            this.map.evetHandler()
             this.curentPage = 'map'
         })
 

@@ -42,10 +42,6 @@ export class Map extends EventTarget{
         this.touchmove = e => {
             this.move(this.scene.touchePosition(e))
         }
-
-        this.clickPart = e => {
-            this.dispatchRunPart(e)
-        }
     }
 
     get scene(){
@@ -232,9 +228,12 @@ export class Map extends EventTarget{
         
         this.scene.canvas.addEventListener('touchmove', this.touchmove)
 
-        for(mapName in this.levels){
+        for(let mapName in this.levels){
             for(let part in this.levels[mapName].parts){
-                this.levels[mapName].parts[part].btnPart.addEventListener('click', this.clickPart)
+                this.levels[mapName].parts[part].btnPart.addEventListener('click',  e => {
+                    this.runPart.dataPart = this.levels[mapName].parts[part]
+                    this.dispatchEvent(this.runPart)
+                })
             }
         }
     }
@@ -248,16 +247,14 @@ export class Map extends EventTarget{
         
         this.scene.canvas.removeEventListener('touchmove', this.touchmove)
 
-        for(mapName in this.levels){
+        for(let mapName in this.levels){
             for(let part in this.levels[mapName].parts){
-                this.levels[mapName].parts[part].btnPart.removeEventListener('click', this.clickPart)
+                this.levels[mapName].parts[part].btnPart.removeEventListener('click', e => {
+                    this.runPart.dataPart = this.levels[mapName].parts[part]
+                    this.dispatchEvent(this.runPart)
+                })
             }
         }
-    }
-
-    dispatchRunPart(evet){
-        this.runPart.dataPart = this.levels[mapName].parts[part]
-        this.dispatchEvent(this.runPart)
     }
 
     startMove(evetPose){

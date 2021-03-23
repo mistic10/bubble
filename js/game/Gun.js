@@ -62,6 +62,16 @@ export class Gun{
             })
         }))//ici le file
         .addComponent(new ImgComponent({
+            name : "fileGun",
+            scene: this.scene,
+            image : this.assetsBank.img.fileGun,
+            size : this.game.percentsize('fileGun', 'bgPart'),
+            position : this.fileGunPosition(),
+            source : new Source ({
+                size : new Size(this.assetsBank.img.fileGun.width, this.assetsBank.img.fileGun.height)
+            })
+        }))
+        .addComponent(new ImgComponent({
             name : "inGun",
             scene: this.scene,
             image : this.assetsBank.img.inGun,
@@ -103,6 +113,10 @@ export class Gun{
         size = this.game.percentsize('gun', 'bgPart')
 
         return new Vector(this.scene.center.x - (size.width / 2), tail.position.y + ((tail.size.height / 3) - size.height))
+    }
+
+    fileGunPosition(){
+        return new Vector(this.scene.center.x, this.gunPosition().y + (this.game.percentsize('gun', 'bgPart').height - (this.game.percentsize('fileGun', 'bgPart').height / 3)))
     }
 
     inGunPosition(){
