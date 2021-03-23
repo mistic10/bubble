@@ -134,6 +134,7 @@ export class Gun{
     resize(){
         let gun = this.scene.getComponent('gun'),
         backGun = this.scene.getComponent('backGun'),
+        fileGun = this.scene.getComponent('fileGun'),
         inGun = this.scene.getComponent('inGun'),
         footGun = this.scene.getComponent('footGun'),
         shadowGun = this.scene.getComponent('shadowGun')
@@ -145,6 +146,9 @@ export class Gun{
         backGun.size = this.game.percentsize('backGun', 'bgPart')
         backGun.position = gun.position
         backGun.axe = new Vector(gun.size.width / 2, (gun.size.height / 3) * 2)
+
+        fileGun.size = this.game.percentsize('fileGun', 'bgPart')
+        fileGun.position = this.fileGunPosition()
 
         inGun.size = this.game.percentsize('inGun', 'bgPart')
         inGun.position = this.inGunPosition()
