@@ -25,22 +25,26 @@ export class Map extends EventTarget{
         this.posYMap = 0
         this.posYMouse = 0
 
-        this.mousedown = (e) => {
+        this.mousedown = e => {
             this.startMove(this.scene.mousePosition(e))
         }
 
-        this.touchstart = (e) => {
+        this.touchstart = e => {
             this.startMove(this.scene.touchePosition(e))
         }
 
-        this.mousemove = (e) => {
+        this.mousemove = e => {
             if(e.buttons == 1){
                 this.move(this.scene.mousePosition(e))
             }
         }
 
-        this.touchmove = (e) => {
+        this.touchmove = e => {
             this.move(this.scene.touchePosition(e))
+        }
+
+        this.clickPart = e => {
+            this.dispatchRunPart(e)
         }
     }
 
@@ -192,11 +196,6 @@ export class Map extends EventTarget{
 
             this.scene.addComponent(parts[part].btnPart)
 
-            parts[part].btnPart.addEventListener('click', (e) => {
-                this.runPart.dataPart = parts[part]
-                this.dispatchEvent(this.runPart)
-            })
-
             this.num(mapName, part)
         }
     }
@@ -232,6 +231,12 @@ export class Map extends EventTarget{
         this.scene.canvas.addEventListener('mousemove', this.mousemove)
         
         this.scene.canvas.addEventListener('touchmove', this.touchmove)
+
+        for(mapName in this.levels){
+            for(let part in this.levels[mapName].parts){
+                this.levels[mapName].parts[part].btnPart.addEventListener('click', this.clickPart)
+            }
+        }
     }
 
     removeEvet(){
@@ -242,6 +247,17 @@ export class Map extends EventTarget{
         this.scene.canvas.removeEventListener('mousemove', this.mousemove)
         
         this.scene.canvas.removeEventListener('touchmove', this.touchmove)
+
+        for(mapName in this.levels){
+            for(let part in this.levels[mapName].parts){
+                this.levels[mapName].parts[part].btnPart.removeEventListener('click', this.clickPart)
+            }
+        }
+    }
+
+    dispatchRunPart(evet){
+        this.runPart.dataPart = this.levels[mapName].parts[part]
+        this.dispatchEvent(this.runPart)
     }
 
     startMove(evetPose){
