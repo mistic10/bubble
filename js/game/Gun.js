@@ -4,7 +4,7 @@ import { Source } from '../lib/Source.js'
 import { Vector } from '../lib/Vector.js'
 import { Angle } from '../lib/Angle.js'
 
-import { Bubble } from './bubble.js'
+import { Bubble } from './Bubble.js'
 
 export class Gun{
     constructor(game){
