@@ -219,13 +219,13 @@
 		"url":"assets\/img\/part\/gun\/9.png",
 		"type":"img",
 		"preload":true,
-		"size":35134
+		"size":44880
 	},
 	"backGun":{
 		"url":"assets\/img\/part\/gun\/10.png",
 		"type":"img",
 		"preload":true,
-		"size":2105
+		"size":6674
 	},
 	"inGun":{
 		"url":"assets\/img\/part\/gun\/11.png",
@@ -250,5 +250,113 @@
 		"type":"img",
 		"preload":true,
 		"size":3057
+	},
+	"bubble1":{
+		"url":"assets\/img\/part\/bubbles\/1.png",
+		"type":"img",
+		"preload":true,
+		"size":17471
+	},
+	"bubble2":{
+		"url":"assets\/img\/part\/bubbles\/2.png",
+		"type":"img",
+		"preload":true,
+		"size":16279
+	},
+	"bubble3":{
+		"url":"assets\/img\/part\/bubbles\/3.png",
+		"type":"img",
+		"preload":true,
+		"size":16003
+	},
+	"bubble4":{
+		"url":"assets\/img\/part\/bubbles\/4.png",
+		"type":"img",
+		"preload":true,
+		"size":14829
+	},
+	"bubble5":{
+		"url":"assets\/img\/part\/bubbles\/5.png",
+		"type":"img",
+		"preload":true,
+		"size":16187
+	},
+	"bubble6":{
+		"url":"assets\/img\/part\/bubbles\/6.png",
+		"type":"img",
+		"preload":true,
+		"size":17185
+	},
+	"bubble7":{
+		"url":"assets\/img\/part\/bubbles\/7.png",
+		"type":"img",
+		"preload":true,
+		"size":16705
+	},
+	"bubble8":{
+		"url":"assets\/img\/part\/bubbles\/8.png",
+		"type":"img",
+		"preload":true,
+		"size":17318
+	},
+	"bubble9":{
+		"url":"assets\/img\/part\/bubbles\/9.png",
+		"type":"img",
+		"preload":true,
+		"size":14271
+	},
+	"bubble10":{
+		"url":"assets\/img\/part\/bubbles\/10.png",
+		"type":"img",
+		"preload":true,
+		"size":13428
+	},
+	"bubble11":{
+		"url":"assets\/img\/part\/bubbles\/11.png",
+		"type":"img",
+		"preload":true,
+		"size":16524
+	},
+	"bubble12":{
+		"url":"assets\/img\/part\/bubbles\/12.png",
+		"type":"img",
+		"preload":true,
+		"size":14389
+	},
+	"bubble13":{
+		"url":"assets\/img\/part\/bubbles\/13.png",
+		"type":"img",
+		"preload":true,
+		"size":14960
+	},
+	"bubble14":{
+		"url":"assets\/img\/part\/bubbles\/14.png",
+		"type":"img",
+		"preload":true,
+		"size":17258
+	},
+	"bubble15":{
+		"url":"assets\/img\/part\/bubbles\/15.png",
+		"type":"img",
+		"preload":true,
+		"size":13661
+	},
+	"bubble16":{
+		"url":"assets\/img\/part\/bubbles\/16.png",
+		"type":"img",
+		"preload":true,
+		"size":14274
+	},
+	"bubble17":{
+		"url":"assets\/img\/part\/bubbles\/17.png",
+		"type":"img",
+		"preload":true,
+		"size":13064
+	},
+	"bubble18":{
+		"url":"assets\/img\/part\/bubbles\/18.png",
+		"type":"img",
+		"preload":true,
+		"size":16638
 	}
 }

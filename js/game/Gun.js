@@ -8,23 +8,12 @@ export class Gun{
     constructor(game){
         this.game = game
         
+        this.bubble1
+        this.bubble2
 
-        this.scene.canvas.addEventListener('mousemove', (e) => {
-            let gun = this.scene.getComponent('gun'),
-            backGun = this.scene.getComponent('backGun'),
-            pos = this.scene.mousePosition(e),
-            angle = Math.atan2((gun.position.y + (gun.size.height / 2)) - pos.y, pos.x - (gun.position.x + gun.size.width / 2)) - Math.PI / 2
-
-            
-            if(angle < -(Math.PI /3) && angle > -(Math.PI + .001))
-                angle = -(Math.PI /3)
-
-            if(angle > Math.PI /3 ||  angle < -(Math.PI) && angle > -(Math.PI + (Math.PI/2)))
-                angle = Math.PI / 3
-            
-            gun.angle.value = - angle
-            backGun.angle.value = gun.angle.value
-        })
+        this.mousemove = e => {
+            this.trackMouse(e)
+        }
     }
 
     get scene(){
@@ -129,6 +118,31 @@ export class Gun{
 
     shadowGunPosition(){
         return new Vector(this.scene.center.x - (this.game.percentsize('shadowGun', 'bgPart').width / 2), this.footGunPosition().y + this.game.percentsize('footGun', 'bgPart').height - (this.game.percentsize('shadowGun', 'bgPart').height / 2))
+    }
+
+    evetHandler(){
+        this.scene.canvas.addEventListener('mousemove', this.mousemove)
+    }
+
+    removeEvet(){
+        this.scene.canvas.removeEventListener('mousemove', this.mousemove)
+    }
+
+    trackMouse(e){
+        let gun = this.scene.getComponent('gun'),
+        backGun = this.scene.getComponent('backGun'),
+        pos = this.scene.mousePosition(e),
+        angle = Math.atan2((gun.position.y + (gun.size.height / 2)) - pos.y, pos.x - (gun.position.x + gun.size.width / 2)) - Math.PI / 2
+
+        
+        if(angle < -(Math.PI /3) && angle > -(Math.PI + .001))
+            angle = -(Math.PI /3)
+
+        if(angle > Math.PI /3 ||  angle < -(Math.PI) && angle > -(Math.PI + (Math.PI/2)))
+            angle = Math.PI / 3
+        
+        gun.angle.value = - angle
+        backGun.angle.value = gun.angle.value
     }
 
     resize(){
