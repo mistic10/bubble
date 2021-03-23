@@ -10,8 +10,6 @@ export class Part{
         this.game = game
         this.data = data
 
-        console.log(this.data);
-
         this.gun = new Gun(this.game)
     }
 

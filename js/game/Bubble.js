@@ -1,4 +1,6 @@
-class Bubble extends ImgComponent{
+import { ImgComponent } from '../lib/ImgComponent.js'
+
+export class Bubble extends ImgComponent{
     constructor(data){
         super(data)
 
