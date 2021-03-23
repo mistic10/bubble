@@ -1,3 +1,4 @@
+/*
 if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/sw.js', { scope: '/' })
     .then(function(reg){
@@ -20,6 +21,8 @@ if('serviceWorker' in navigator){
 else{
     console.log('serviceWorker n\'est pas pris en charge par le navigateur')
 }
+
+*/
 
 
 

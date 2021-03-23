@@ -60,7 +60,7 @@ export class Gun{
             source : new Source ({
                 size : new Size(this.assetsBank.img.footGun.width, this.assetsBank.img.footGun.height)
             })
-        }))//ici le file
+        }))
         .addComponent(new ImgComponent({
             name : "fileGun",
             scene: this.scene,
