@@ -12,7 +12,7 @@ var filesToCache = [
     '/js/game/',
     '/js/game/Bubble.js',
     '/js/game/Game.js',
-    '/js/game/LevelPage.js',
+    '/js/game/Map.js',
     '/js/game/LoadingPage.js',
     '/js/game/Part.js',
     '/js/game/Player.js',
