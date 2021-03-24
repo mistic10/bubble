@@ -11,10 +11,6 @@ export class Gun{
         this.game = game
 
         this.angle = new Angle
-
-        this.mousemove = e => {
-            this.trackMouse(e)
-        }
     }
 
     get scene(){
@@ -160,24 +156,14 @@ export class Gun{
 
     }
 
-
-    evetHandler(){
-        this.scene.canvas.addEventListener('mousemove', this.mousemove)
-    }
-
     removeEvet(){
         this.scene.canvas.removeEventListener('mousemove', this.mousemove)
     }
 
-    trackMouse(e){
+    toAngle(pos){
         let gun = this.scene.getComponent('gun'),
-        backGun = this.scene.getComponent('backGun'),
-        bubble1 = this.scene.getComponent('bubble1'),
-        bubble2 = this.scene.getComponent('bubble2'),
-        pos = this.scene.mousePosition(e),
         angle = Math.atan2((gun.position.y + (gun.size.height / 2)) - pos.y, pos.x - (gun.position.x + gun.size.width / 2)) - Math.PI / 2
 
-        
         if(angle < -(Math.PI /3) && angle > -(Math.PI + .001))
             angle = -(Math.PI /3)
 
@@ -185,11 +171,14 @@ export class Gun{
             angle = Math.PI / 3
         
         this.angle.value = - angle
-        
-        gun.angle = this.angle
-        backGun.angle = this.angle
-        bubble1.angle = this.angle
-        bubble2.angle = this.angle
+    }
+
+    trackMouse(pos){
+        this.toAngle(pos)
+        this.scene.getComponent('gun').angle = this.angle
+        this.scene.getComponent('backGun').angle = this.angle
+        this.scene.getComponent('bubble1').angle = this.angle
+        this.scene.getComponent('bubble2').angle = this.angle
     }
 
     resize(){

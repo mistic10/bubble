@@ -39,6 +39,7 @@ export class Game{
             this.map.dispose()
             this.part = new Part(this, e.dataPart)
             this.part.draw()
+            this.part.evetHandler()
             
             this.curentPage = 'part'
         })

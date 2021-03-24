@@ -11,6 +11,21 @@ export class Part{
         this.data = data
 
         this.gun = new Gun(this.game)
+
+        this.mousemove = e => {
+            this.gun.trackMouse(this.scene.mousePosition(e))
+        }
+
+        this.touchmove = e => {
+            this.gun.trackMouse(this.scene.touchePosition(e))
+        }
+
+        this.click = e => {
+            console.log('envoi de:')
+            console.log(this.gun.bubble1)
+            console.log('sur l\'angle')
+            console.log(this.gun.angle)
+        }
     }
 
     get scene(){
@@ -62,7 +77,13 @@ export class Part{
         }))
         
         this.gun.draw()
-        this.gun.evetHandler()
+    }
+
+    evetHandler(){
+        this.scene.canvas.addEventListener('mousemove', this.mousemove)
+        this.scene.canvas.addEventListener('touchmove', this.touchmove)
+
+        this.scene.canvas.addEventListener('click', this.click)
     }
 
     resize(){
