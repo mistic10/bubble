@@ -28,32 +28,33 @@ export class Grid{
         for(let line of this.part.data.grid){
             let c = 0
             for(let bubble of line){
-                let type = bubble,
-                assetName = 'bubble'+type,
-                size = this.game.percentsize(assetName, 'bgPart'),
-                bg = this.scene.getComponent('bgPart'),
-                decal = line.length < 12 ? size.width / 2 : 0
 
-                this.part.data.grid[l][c] = new Bubble({
-                    name : 'b_'+l+'_'+c,
-                    type : type,
-                    scene: this.scene,
-                    image : this.assetsBank.img[assetName],
-                    size : size,
-                    position : new Vector((bg.position.x + this.marge + decal) + (size.width * c), (size.height * l) - this.marge),
-                    source : new Source ({
-                        size : new Size(this.assetsBank.img[assetName].width, this.assetsBank.img[assetName].height)
+                if(bubble){
+                    let type = bubble,
+                    assetName = 'bubble'+type,
+                    size = this.game.percentsize(assetName, 'bgPart'),
+                    bg = this.scene.getComponent('bgPart'),
+                    decal = line.length < 12 ? size.width / 2 : 0
+
+                    this.part.data.grid[l][c] = new Bubble({
+                        name : 'b_'+l+'_'+c,
+                        type : type,
+                        scene: this.scene,
+                        image : this.assetsBank.img[assetName],
+                        size : size,
+                        position : new Vector((bg.position.x + this.marge + decal) + (size.width * c), (size.height * l) - this.marge),
+                        source : new Source ({
+                            size : new Size(this.assetsBank.img[assetName].width, this.assetsBank.img[assetName].height)
+                        })
                     })
-                })
-                
-                this.scene
-                .addComponent(this.part.data.grid[l][c])
-                
+                    
+                    this.scene
+                    .addComponent(this.part.data.grid[l][c])
+                }
                 c ++
             }
             l ++
         }
-
     }
 
     resize(){
@@ -63,9 +64,11 @@ export class Grid{
         for(let line of this.part.data.grid){
             let c = 0
             for(let bubble of line){
-                bubble.size = this.game.percentsize('bubble'+bubble.type, 'bgPart')
-                let decal = line.length < 12 ? bubble.size.width / 2 : 0
-                bubble.position = new Vector((bg.position.x + this.marge + decal) + (bubble.size.width * c), (bubble.size.height * l) - this.marge)
+                if(typeof bubble == 'object' && bubble.constructor.name == 'Bubble'){
+                    bubble.size = this.game.percentsize('bubble'+bubble.type, 'bgPart')
+                    let decal = line.length < 12 ? bubble.size.width / 2 : 0
+                    bubble.position = new Vector((bg.position.x + this.marge + decal) + (bubble.size.width * c), (bubble.size.height * l) - this.marge)
+                }
                 c ++
             }
             l ++
