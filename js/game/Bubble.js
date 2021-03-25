@@ -4,6 +4,7 @@ export class Bubble extends ImgComponent{
     constructor(data){
         super(data)
 
+        this.type = data.type
         this.rayon = data.rayon
     }
 

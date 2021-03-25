@@ -121,7 +121,7 @@ window.addEventListener('load', (e) => {
     })
 
 
-    //mise en movement de labulle -- Object "part" --
+    //mise en movement de la bulle -- Object "part" --
     var position = (elt) => {
         elt.position.x += speed * Math.cos(angle.rad)
         elt.position.y += speed * -1 * Math.sin(angle.rad)

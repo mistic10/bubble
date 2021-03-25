@@ -4,6 +4,7 @@ import { Source } from '../lib/Source.js'
 import { Vector } from '../lib/Vector.js'
 
 import { Gun } from './Gun.js'
+import { Grid } from './Grid.js'
 
 export class Part{
     constructor(game, data){
@@ -11,6 +12,7 @@ export class Part{
         this.data = data
 
         this.gun = new Gun(this.game)
+        this.grid = new Grid(this.game)
 
         this.mousemove = e => {
             this.gun.trackMouse(this.scene.mousePosition(e))
@@ -34,10 +36,6 @@ export class Part{
 
     get assetsBank(){
         return this.game.assetsBank
-    }
-
-    get grid(){
-        return this.data.grid
     }
 
     bgSize(name){
@@ -77,6 +75,7 @@ export class Part{
         }))
         
         this.gun.draw()
+        this.grid.draw()
     }
 
     evetHandler(){
@@ -97,6 +96,7 @@ export class Part{
         tail.position = new Vector(bgPart.position.x, (bgPart.position.y + bgPart.size.height) - (bgPart.size.height / 4))
 
         this.gun.resize()
+        this.grid.resize()
     }
 
     dispose(){
