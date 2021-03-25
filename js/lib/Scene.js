@@ -136,6 +136,24 @@ export class Scene{
     }
 
     /**
+     * @param {String} oldName 
+     * @param {String} newName
+     * @description modiffi le nom d'un commponent
+     * @returns {Scene} retourn la scene "this" pour le chainage
+     * @method
+     */
+    setNameComponent(oldName, newName){
+        if(! this.hasComponent(oldName) || this.zorder.indexOf(oldName)  < 0)
+            return this
+        
+        this.getComponent(oldName).name = newName
+        let indexZorder = this.zorder.indexOf(oldName)
+        this.zorder[indexZorder] = newName
+
+        return this
+    }
+
+    /**
      * @description retir et détruis touts les objets de la scène
      * @returns {Scene} retourn la scene "this" pour le chainage
      * @method
