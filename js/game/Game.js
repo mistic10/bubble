@@ -49,7 +49,6 @@ export class Game{
     }
 
     runMap(e){
-        console.log('assets is loaed')
         this.loadingPage.dispose()
         this.map.draw()
         this.map.evetHandler()
@@ -57,7 +56,6 @@ export class Game{
     }
 
     runPart(e){
-        console.log('run a new part')
         this.map.removeEvet()
         this.map.dispose()
         this.part = new Part(this, e.dataPart)
