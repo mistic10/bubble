@@ -42,7 +42,7 @@ export class Grid{
                         scene: this.scene,
                         image : this.assetsBank.img[assetName],
                         size : size,
-                        position : new Vector((bg.position.x + this.marge + decal) + (size.width * c), (size.height * l) - this.marge),
+                        position : new Vector((bg.position.x + this.marge + decal) + (size.width * c), size.height * l),
                         source : new Source ({
                             size : new Size(this.assetsBank.img[assetName].width, this.assetsBank.img[assetName].height)
                         })

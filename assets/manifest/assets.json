@@ -33,7 +33,7 @@
 		"url":"assets\/manifest\/levels.json",
 		"type":"json",
 		"preload":true,
-		"size":6614
+		"size":6007
 	},
 	"sky1":{
 		"url":"assets\/img\/map\/sky\/1.png",
@@ -267,96 +267,96 @@
 		"url":"assets\/img\/part\/bubbles\/3.png",
 		"type":"img",
 		"preload":true,
-		"size":16003
+		"size":14829
 	},
 	"bubble4":{
 		"url":"assets\/img\/part\/bubbles\/4.png",
 		"type":"img",
 		"preload":true,
-		"size":14829
+		"size":16187
 	},
 	"bubble5":{
 		"url":"assets\/img\/part\/bubbles\/5.png",
 		"type":"img",
 		"preload":true,
-		"size":16187
+		"size":17185
 	},
 	"bubble6":{
 		"url":"assets\/img\/part\/bubbles\/6.png",
 		"type":"img",
 		"preload":true,
-		"size":17185
+		"size":16705
 	},
 	"bubble7":{
 		"url":"assets\/img\/part\/bubbles\/7.png",
 		"type":"img",
 		"preload":true,
-		"size":16705
+		"size":17318
 	},
 	"bubble8":{
 		"url":"assets\/img\/part\/bubbles\/8.png",
 		"type":"img",
 		"preload":true,
-		"size":17318
+		"size":14271
 	},
 	"bubble9":{
 		"url":"assets\/img\/part\/bubbles\/9.png",
 		"type":"img",
 		"preload":true,
-		"size":14271
+		"size":13428
 	},
 	"bubble10":{
 		"url":"assets\/img\/part\/bubbles\/10.png",
 		"type":"img",
 		"preload":true,
-		"size":13428
+		"size":16524
 	},
 	"bubble11":{
 		"url":"assets\/img\/part\/bubbles\/11.png",
 		"type":"img",
 		"preload":true,
-		"size":16524
+		"size":14389
 	},
 	"bubble12":{
 		"url":"assets\/img\/part\/bubbles\/12.png",
 		"type":"img",
 		"preload":true,
-		"size":14389
+		"size":14960
 	},
 	"bubble13":{
 		"url":"assets\/img\/part\/bubbles\/13.png",
 		"type":"img",
 		"preload":true,
-		"size":14960
+		"size":17258
 	},
 	"bubble14":{
 		"url":"assets\/img\/part\/bubbles\/14.png",
 		"type":"img",
 		"preload":true,
-		"size":17258
+		"size":13661
 	},
 	"bubble15":{
 		"url":"assets\/img\/part\/bubbles\/15.png",
 		"type":"img",
 		"preload":true,
-		"size":13661
+		"size":14274
 	},
 	"bubble16":{
 		"url":"assets\/img\/part\/bubbles\/16.png",
 		"type":"img",
 		"preload":true,
-		"size":14274
+		"size":13064
 	},
 	"bubble17":{
 		"url":"assets\/img\/part\/bubbles\/17.png",
 		"type":"img",
 		"preload":true,
-		"size":13064
+		"size":16638
 	},
 	"bubble18":{
 		"url":"assets\/img\/part\/bubbles\/18.png",
 		"type":"img",
 		"preload":true,
-		"size":16638
+		"size":16003
 	}
 }

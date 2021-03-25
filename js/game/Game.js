@@ -24,30 +24,44 @@ export class Game{
         this.map = new Map(this)
         this.part = undefined
 
+        this.run()
+
+        this.load = e => this.runMap(e)
+
+        this.rPart = e => this.runPart(e)
+
+        this.resize = e => {
+            this.setSize()
+            this[this.curentPage].resize()
+        }
+    }
+
+    run(){
         this.loadingPage.draw()
         this.curentPage = 'loadingPage'
+        this.evetHandler()
+    }
 
-        this.loadingPage.addEventListener('load', (e) => {
+    evetHandler(){
+        window.addEventListener('resize', this.resize)
+        this.loadingPage.addEventListener('load', this.load)
+        this.map.addEventListener('runPart', () => {this.runPart})
+    }
+
+    runMap(e){
             this.loadingPage.dispose()
             this.map.draw()
             this.map.evetHandler()
             this.curentPage = 'map'
-        })
+    }
 
-        this.map.addEventListener('runPart', (e) => {
+    runPart(e){
             this.map.removeEvet()
             this.map.dispose()
             this.part = new Part(this, e.dataPart)
             this.part.draw()
             this.part.evetHandler()
-            
             this.curentPage = 'part'
-        })
-
-        window.addEventListener('resize', (e) => {
-            this.setSize()
-            this[this.curentPage].resize()
-        })
     }
 
     setSize(){
@@ -60,5 +74,5 @@ export class Game{
 
     bgpercent(bgName){
         return this.scene.size.height < this.scene.size.width ? 100 * this.scene.size.height / this.assetsBank.img[bgName].height : 100 * this.scene.size.width / this.assetsBank.img[bgName].width
-    }//percent = 100 * partiel / total
+    }
 }
