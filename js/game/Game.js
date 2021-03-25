@@ -25,15 +25,6 @@ export class Game{
         this.part = undefined
 
         this.run()
-
-        this.load = e => this.runMap(e)
-
-        this.rPart = e => this.runPart(e)
-
-        this.resize = e => {
-            this.setSize()
-            this[this.curentPage].resize()
-        }
     }
 
     run(){
@@ -43,25 +34,36 @@ export class Game{
     }
 
     evetHandler(){
-        window.addEventListener('resize', this.resize)
-        this.loadingPage.addEventListener('load', this.load)
-        this.map.addEventListener('runPart', () => {this.runPart})
+        this.loadingPage.addEventListener('load', e => {
+            this.runMap(e)
+        })
+
+        this.map.addEventListener('runPart', e => {
+            this.runPart(e)
+        })
+
+        window.addEventListener('resize', e => {
+            this.setSize()
+            this[this.curentPage].resize()
+        })
     }
 
     runMap(e){
-            this.loadingPage.dispose()
-            this.map.draw()
-            this.map.evetHandler()
-            this.curentPage = 'map'
+        console.log('assets is loaed')
+        this.loadingPage.dispose()
+        this.map.draw()
+        this.map.evetHandler()
+        this.curentPage = 'map'
     }
 
     runPart(e){
-            this.map.removeEvet()
-            this.map.dispose()
-            this.part = new Part(this, e.dataPart)
-            this.part.draw()
-            this.part.evetHandler()
-            this.curentPage = 'part'
+        console.log('run a new part')
+        this.map.removeEvet()
+        this.map.dispose()
+        this.part = new Part(this, e.dataPart)
+        this.part.draw()
+        this.part.evetHandler()
+        this.curentPage = 'part'
     }
 
     setSize(){
